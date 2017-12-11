@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Thirio</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="id">1</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="TextAppearance.Large">
+        <item name="android:textSize">22sp</item>
+    </string>
+
+    <string name="TextAppearance.Medium">
+        <item name="android:textSize">18sp</item>
+    </string>
+
+    <string name="TextAppearance.Small">
+        <item name="android:textSize">14sp</item>
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

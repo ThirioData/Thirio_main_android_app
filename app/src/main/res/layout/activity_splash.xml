@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/temp"
+    tools:context="com.thirio.android.Activities.Splash">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:gravity="center"
+        android:textSize="42sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorExtra"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/food"
+        android:text="FOOD"/>
+
+    <TextView
+
+        android:textSize="42sp"
+        android:id="@+id/fitness"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/food"
+        android:layout_alignEnd="@id/food"
+        android:gravity="center"
+        android:text="FITNESS"
+        android:textColor="@color/colorPrimary" />
+    <TextView
+
+        android:textSize="42sp"
+        android:id="@+id/health"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/fitness"
+        android:layout_alignEnd="@id/fitness"
+        android:gravity="center"
+        android:text="HEALTH"
+        android:textColor="@color/colorExtra" />
+
+    <TextView
+
+        android:textSize="42sp"
+        android:id="@+id/indian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/health"
+        android:layout_alignEnd="@id/health"
+        android:gravity="center"
+        android:text="INDIAN"
+        android:textColor="@color/colorPrimaryDark" />
+</RelativeLayout>
+</LinearLayout>

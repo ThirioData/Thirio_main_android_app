@@ -1,0 +1,94 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.thirio.android.fragments.landing.FOOD">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.thirio.android.fragments.landing.FOND">
+
+        <!-- TODO: Update blank fragment layout -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WTFOOD"
+                android:layout_marginTop="32dp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@android:color/white"
+                android:textSize="40sp"
+                android:fontFamily="@font/helveticaneuecond"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/wtf"/>
+
+            <TextView
+                android:layout_below="@id/wtf"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FACTS"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@android:color/white"
+                android:textSize="40sp"
+                android:fontFamily="@font/helveticaneuecond"
+                android:id="@+id/facts"/>
+            <LinearLayout
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="64dp"
+                android:orientation="vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_below="@id/facts"
+                android:layout_centerInParent="true">
+
+
+
+                <TextView
+                    android:textColor="#dfffffff"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-Apples belong to the rose family, as do pears and plumbs."
+                    android:textSize="24sp"
+                    android:layout_below="@+id/logo"
+
+                    android:fontFamily="@font/helveticaneuecondensedblack"
+                    android:id="@+id/text1"/>
+                <TextView
+                    android:layout_marginTop="32dp"
+                    android:layout_centerInParent="true"
+                    android:textSize="24sp"
+                    android:textColor="#dfffffff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-Chocolate was once used as currency."
+                    android:id="@+id/text2"
+                    android:fontFamily="@font/helveticaneuecondensedblack"
+                    android:layout_below="@+id/text1"/>
+                <TextView
+                    android:layout_marginTop="32dp"
+                    android:layout_centerInParent="true"
+                    android:textSize="24sp"
+                    android:textColor="#dfffffff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-One of the most popular pizza toppings in Brazil is green peas."
+                    android:fontFamily="@font/helveticaneuecondensedblack"
+                    android:id="@+id/text3"
+                    android:layout_below="@+id/text2"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </FrameLayout>
+
+
+</FrameLayout>
