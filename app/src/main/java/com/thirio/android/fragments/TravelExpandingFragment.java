@@ -1,12 +1,11 @@
-package com.qslll.expandingpager.fragments;
+package com.thirio.android.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
-import com.qslll.expandingpager.model.Travel;
-import com.qslll.library.fragments.ExpandingFragment;
-
+import com.thirio.android.model.Travel;
+import com.thirio.android.utils.ExpandingFragment;
 /**
  * this is control fragment , Top and Bottom is child in it.
  *
@@ -49,6 +48,6 @@ public class TravelExpandingFragment extends ExpandingFragment {
      */
     @Override
     public Fragment getFragmentBottom() {
-        return FragmentBottom.newInstance();
+        return FragmentBottom.newInstance(travel);
     }
 }

@@ -29,7 +29,7 @@ public class Loading extends AppCompatActivity {
             }
 
             public void onFinish() {
-                    startActivity(new Intent(Loading.this,MainActivity.class));
+                startActivity(new Intent(Loading.this, MainActivity1.class));
             }
         }.start();
     }

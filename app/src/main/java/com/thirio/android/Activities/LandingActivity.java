@@ -18,8 +18,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.rd.PageIndicatorView;
-import com.rd.animation.type.AnimationType;
 import com.thirio.android.R;
 import com.thirio.android.fragments.foodCuration.Dinner;
 import com.thirio.android.fragments.foodCuration.Snacks;
@@ -31,11 +29,11 @@ import java.util.List;
 
 public class LandingActivity extends AppCompatActivity {
     ViewPagerAdapter adapter;
+    ValueAnimator mColorAnimation;
+    Integer[] colors = {Color.parseColor("#f42f0f"), Color.parseColor("#6d9302"), Color.parseColor("#e10d0a"), Color.parseColor("#ff7300")};
     private Toolbar toolbar;
 //    private TabLayout tabLayout;
     private ViewPager viewPager;
-    ValueAnimator mColorAnimation;
-    Integer[] colors = {Color.parseColor("#f42f0f"), Color.parseColor("#6d9302"), Color.parseColor("#e10d0a"),Color.parseColor("#ff7300")};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +47,13 @@ public class LandingActivity extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
-        PageIndicatorView pageIndicatorView=(PageIndicatorView)findViewById(R.id.pageIndicatorView);
-
-        pageIndicatorView.setUnselectedColor(Color.parseColor("#99ffffff"));
-        pageIndicatorView.setSelectedColor(Color.parseColor("#7040A3"));
-        pageIndicatorView.setAnimationDuration(500);
-        pageIndicatorView.setAnimationType(AnimationType.SWAP);
-        pageIndicatorView.setViewPager(viewPager);
+//        PageIndicatorView pageIndicatorView=(PageIndicatorView)findViewById(R.id.pageIndicatorView);
+//
+//        pageIndicatorView.setUnselectedColor(Color.parseColor("#99ffffff"));
+//        pageIndicatorView.setSelectedColor(Color.parseColor("#7040A3"));
+//        pageIndicatorView.setAnimationDuration(500);
+//        pageIndicatorView.setAnimationType(AnimationType.SWAP);
+//        pageIndicatorView.setViewPager(viewPager);
 //        tabLayout = (TabLayout) findViewById(R.id.tabs);
 //        tabLayout.setupWithViewPager(viewPager);
 //        setupTabIcons();
@@ -115,37 +113,6 @@ public class LandingActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
-
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-//            return mFragmentTitleList.get(position);
-            return null;
-        }
-
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 //        MenuInflater inflater = getMenuInflater();
@@ -177,5 +144,36 @@ public class LandingActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+//            return mFragmentTitleList.get(position);
+            return null;
+        }
+
     }
 }

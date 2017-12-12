@@ -1,32 +1,28 @@
-package com.qslll.expandingpager.fragments;
+package com.thirio.android.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.qslll.expandingpager.InfoActivity;
-import com.qslll.expandingpager.R;
-import com.qslll.expandingpager.model.Travel;
+import com.thirio.android.R;
+import com.thirio.android.model.Travel;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-
 public class FragmentTop extends Fragment {
 
     static final String ARG_TRAVEL = "ARG_TRAVEL";
     Travel travel;
 
-    @Bind(R.id.image) ImageView image;
-    @Bind(R.id.title) TextView title;
+    @BindView(R.id.image)
+    ImageView image;
+    @BindView(R.id.title)
+    TextView title;
 
     public static FragmentTop newInstance(Travel travel) {
         Bundle args = new Bundle();
@@ -64,12 +60,13 @@ public class FragmentTop extends Fragment {
 
     @SuppressWarnings("unchecked")
     private void startInfoActivity(View view, Travel travel) {
-        FragmentActivity activity = getActivity();
-        ActivityCompat.startActivity(activity,
-            InfoActivity.newInstance(activity, travel),
-            ActivityOptionsCompat.makeSceneTransitionAnimation(
-                activity,
-                new Pair<>(view, getString(R.string.transition_image)))
-                .toBundle());
+//        FragmentActivity activity = getActivity();
+//        System.out.println("Info start 1");
+//        ActivityCompat.startActivity(activity,
+//            InfoActivity.newInstance(activity, travel),
+//            ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                activity,
+//                new Pair<>(view, getString(R.string.transition_image)))
+//                .toBundle());
     }
 }

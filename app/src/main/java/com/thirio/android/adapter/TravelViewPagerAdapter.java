@@ -28,13 +28,29 @@ public class TravelViewPagerAdapter extends ExpandingViewPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Travel travel = travels.get(position);
+        Travel travel = travels.get(position % getRealCount());
         return TravelExpandingFragment.newInstance(travel);
     }
-
     @Override
     public int getCount() {
+        if (getRealCount() == 0) {
+            return 0;
+        }
+        // warning: scrolling to very high values (1,000,000+) results in
+        // strange drawing behaviour
+        return Integer.MAX_VALUE;
+    }
+
+    /**
+     * @return the {@link #getCount()} result of the wrapped adapter
+     */
+    public int getRealCount() {
         return travels.size();
     }
+//
+//    @Override
+//    public int getCount() {
+//        return travels.size();
+//    }
 
 }

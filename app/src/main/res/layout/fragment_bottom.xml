@@ -1,59 +1,62 @@
+<!--android:layout_marginTop="10dp"--><!--android:layout_marginBottom="10dp"--><!--android:layout_marginRight="20dp"-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:gravity="center_vertical"
     android:layout_height="match_parent"
     android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
+    android:gravity="center_vertical"
     android:orientation="vertical"
     tools:context=".fragments.FragmentBottom">
 
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="license: every one can use this code to do everything" />
-
+    <!--<com.devspark.robototextview.widget.RobotoTextView-->
+    <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--/>-->
+    <!--margin top 10 dp removed-->
     <RelativeLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+        <ImageView
+            android:id="@+id/descimg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
+
         <TextView
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_weight="1"
-            android:text="NO. 7911847" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/stars" />
+            android:text="Dummy text about desc"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="10dp">-->
 
-        <ImageView
-            android:src="@drawable/icons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-             />
+    <!--<ImageView-->
+    <!--android:src="@drawable/icons"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:visibility="gone"-->
+    <!--/>-->
 
-        <ImageView
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/dots" />
-    </RelativeLayout>
+    <!--<ImageView-->
+
+    <!--android:visibility="gone"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:src="@drawable/dots" />-->
+    <!--</RelativeLayout>-->
 
 </LinearLayout>
