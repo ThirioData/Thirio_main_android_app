@@ -26,16 +26,14 @@ public abstract class ExpandingFragment extends Fragment {
 
     Fragment fragmentFront;
     Fragment fragmentBottom;
-
+    float defaultCardElevation;
     private CardView back;
     private CardView front;
     private CardView layout3;
-
     private float startY;
-
-    float defaultCardElevation;
     private OnExpandingClickListener mListener;
-    private ObjectAnimator frontAnimator;
+    private ObjectAnimator
+            frontAnimator;
     private ObjectAnimator backAnimator;
 
     @Override
@@ -57,9 +55,9 @@ public abstract class ExpandingFragment extends Fragment {
                     .commit();
         }
 
-        back = (CardView) view.findViewById(R.id.back);
-        front = (CardView) view.findViewById(R.id.front);
-        layout3 = (CardView) view.findViewById(R.id.bottomLayout);
+        back = view.findViewById(R.id.back);
+        front = view.findViewById(R.id.front);
+        layout3 = view.findViewById(R.id.bottomLayout);
         view.setOnClickListener(new OnClick());
         setupDownGesture(view);
 
@@ -95,12 +93,13 @@ public abstract class ExpandingFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnExpandingClickListener) {
-            mListener = (OnExpandingClickListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + "ExpandingFragment must implement OnExpandingClickListener");
-        }
+
+//        if (context instanceof OnExpandingClickListener) {
+//            mListener = (OnExpandingClickListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + "ExpandingFragment must implement OnExpandingClickListener");
+//        }
     }
 
     public abstract Fragment getFragmentTop();
@@ -154,23 +153,25 @@ public abstract class ExpandingFragment extends Fragment {
         front.setCardElevation(defaultCardElevation);
     }
 
-    class OnClick implements View.OnClickListener {
+    //    @Override
+    //    public void onAttach(Context context) {
+    //        super.onAttach(context);
+    //
+    //        if (f instanceof OnExpandingClickListener) {
+    //            mListener = (OnExpandingClickListener) f;
+    //        } else {
+    //            throw new RuntimeException(f.toString()
+    //                    + "ExpandingFragment must implement OnExpandingClickListener");
+    //        }
+    //    }
+    //
 
-        @Override
-        public void onClick(View v) {
-            if (isOpenend()) {
-                if (mListener != null) {
-                    mListener.onExpandingClick(v);
-                }
-            } else {
-                open();
-            }
-        }
-    }
+    protected abstract void OnClick1(View v);
 
     public interface OnExpandingClickListener {
         void onExpandingClick(View v);
     }
+
 
     /**
      * Temporarily not used
@@ -185,6 +186,23 @@ public abstract class ExpandingFragment extends Fragment {
     }
 
     public interface ChildBottom extends ExpandingFragment.Child {
+    }
+
+    class OnClick implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            if (isOpenend()) {
+                OnClick1(v);
+//                startActivity(new Intent(getActivity(), InfoActivity.class));
+//                if (mListener != null) {
+
+//                    mListener.onExpandingClick(v);
+//                }
+            } else {
+                open();
+            }
+        }
     }
 
 }
