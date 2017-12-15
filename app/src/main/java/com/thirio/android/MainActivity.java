@@ -1,25 +1,32 @@
 package com.thirio.android;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.felix.bottomnavygation.BottomNav;
+import com.felix.bottomnavygation.ItemNav;
 import com.thirio.android.fragments.foodCuration.Breakfast;
+import com.thirio.android.utils.SimpleGestureFilter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SimpleGestureFilter.SimpleGestureListener {
     //    @BindView(R.id.viewPager)
 //    ViewPager viewPager;
 //    @BindView(R.id.back)
     Fragment home;
     ViewGroup back;
+    LinearLayout llBottom1;
+    private SimpleGestureFilter detector;
 //    private LinearLayout pager_indicator;
 //    private int dotsCount;
 //    private ImageView[] dots;
@@ -32,9 +39,16 @@ public class MainActivity extends AppCompatActivity {
 //        setupWindowAnimations();
 //        TravelViewPagerAdapter adapter = new TravelViewPagerAdapter(getSupportFragmentManager());
 //        setupref();
+        detector = new SimpleGestureFilter(this, this);
 
         home = null;
-        setupNavigationView();
+//        setupNavigationView();
+        llBottom1 = (LinearLayout) findViewById(R.id.llcart);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        llBottom1.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height / 3));
+        setupviews();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -73,6 +87,44 @@ public class MainActivity extends AppCompatActivity {
 //
 //            }
 //        });
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent me) {
+        // Call onTouchEvent of SimpleGestureFilter class
+        this.detector.onTouchEvent(me);
+        return super.dispatchTouchEvent(me);
+    }
+
+    @Override
+    public void onSwipe(int direction) {
+        String str = "";
+
+        switch (direction) {
+
+            case SimpleGestureFilter.SWIPE_RIGHT:
+                str = "Swipe Right";
+                break;
+            case SimpleGestureFilter.SWIPE_LEFT:
+                str = "Swipe Left";
+                break;
+            case SimpleGestureFilter.SWIPE_DOWN:
+                str = "Swipe Down";
+
+                llBottom1.setVisibility(View.GONE);
+                break;
+            case SimpleGestureFilter.SWIPE_UP:
+                str = "Swipe Up";
+                llBottom1.setVisibility(View.VISIBLE);
+                break;
+
+        }
+//        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDoubleTap() {
+        Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show();
     }
 
     //    public void setupref() {
@@ -185,26 +237,74 @@ public class MainActivity extends AppCompatActivity {
 //        dots[0].setImageDrawable(getResources().getDrawable(R.drawable.selecteditem_dot));
 //    }
 
-    private void setupNavigationView() {
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-        if (bottomNavigationView != null) {
 
-            // Select first menu item by default and show Fragment accordingly.
-            Menu menu = bottomNavigationView.getMenu();
-            selectFragment(menu.getItem(0));
+    public void setupviews() {
+        BottomNav bottomNav = (BottomNav) findViewById(R.id.bottomNav);
+        bottomNav.addItemNav(new ItemNav(this, R.drawable.feed, R.drawable.feed_sel).addColorAtive(R.color.colorExtra).addColorInative(android.R.color.white));
+        bottomNav.addItemNav(new ItemNav(this, R.drawable.explore, R.drawable.explore_sel).addColorAtive(R.color.colorExtra).addColorInative(android.R.color.white));
+        bottomNav.addItemNav(new ItemNav(this, R.drawable.atividades, R.drawable.atividades_sel).addColorAtive(R.color.colorExtra).addColorInative(android.R.color.white));
+        bottomNav.addItemNav(new ItemNav(this, R.drawable.perfil, R.drawable.perfil_sel).addColorAtive(R.color.colorExtra).addColorInative(android.R.color.white).isProfileItem().addProfileColorAtive(android.R.color.holo_red_dark).addProfileColorInative(android.R.color.black));
+        final BottomNav one = bottomNav;
+        BottomNav.OnTabSelectedListener listener = new BottomNav.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(int position) {
+//                Toast.makeText(MainActivity.this, "Click position " + position, Toast.LENGTH_SHORT).show();
+                selectFragment1(position);
+            }
 
-            // Set action to perform when any menu-item is selected.
-            bottomNavigationView.setOnNavigationItemSelectedListener(
-                    new BottomNavigationView.OnNavigationItemSelectedListener() {
-                        @Override
-                        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                            selectFragment(item);
-                            return false;
-                        }
-                    });
-        }
+            @Override
+            public void onTabLongSelected(int position) {
+//                Toast.makeText(MainActivity.this, "Long position " + position, Toast.LENGTH_SHORT).show();
+            }
+        };
+        bottomNav.setTabSelectedListener(listener);
+
+        bottomNav.build();
+        bottomNav.selectTab(0);
+
     }
 
+
+    private void setupNavigationView() {
+//        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+//        if (bottomNavigationView != null) {
+//
+//            // Select first menu item by default and show Fragment accordingly.
+//            Menu menu = bottomNavigationView.getMenu();
+//            selectFragment(menu.getItem(0));
+//
+//            // Set action to perform when any menu-item is selected.
+//            bottomNavigationView.setOnNavigationItemSelectedListener(
+//                    new BottomNavigationView.OnNavigationItemSelectedListener() {
+//                        @Override
+//                        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                            selectFragment(item);
+//                            return false;
+//                        }
+//                    });
+//        }
+    }
+
+    protected void selectFragment1(int pos) {
+
+//        item.setChecked(true);
+
+        switch (pos) {
+            case 0:
+                // Action to perform when Home Menu item is selected.
+                home = new HomeFragment();
+                pushFragment(home);
+                break;
+            case 1:
+                // Action to perform when Bag Menu item is selected.
+                pushFragment(new HomeFragment());
+                break;
+            case 2:
+                // Action to perform when Account Menu item is selected.
+                pushFragment(new Breakfast());
+                break;
+        }
+    }
     /**
      * Perform action when any item is selected.
      *
