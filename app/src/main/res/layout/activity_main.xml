@@ -42,6 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:animateLayoutChanges="true"
+        android:background="#f0f0f0"
         android:orientation="vertical">
 
         <com.felix.bottomnavygation.BottomNav
@@ -55,11 +56,12 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:animateLayoutChanges="true"
-            android:background="@android:color/white"
+            android:background="#f0f0f0"
             android:orientation="horizontal"
             android:visibility="gone">
 
             <ScrollView
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 

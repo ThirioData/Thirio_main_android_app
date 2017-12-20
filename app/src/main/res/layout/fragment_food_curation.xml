@@ -1,45 +1,20 @@
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
 
-    android:id="@+id/foodCurationTop"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="com.thirio.android.fragments.FoodCuration">
 
-    card_view:cardBackgroundColor="#fff"
-    card_view:cardCornerRadius="16dp"
-    card_view:cardElevation="3dp"
-    card_view:contentPadding="8dp">
-
+    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical">
-
-
-        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view_bmi_curation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-
-            android:layout_marginBottom="4dp"
-            android:gravity="center"
-            android:transitionName="@string/transition_image"
-            card_view:cardBackgroundColor="@color/colorPrimary"
-            card_view:cardCornerRadius="8dp"
-            card_view:cardElevation="3dp"
-            card_view:contentPadding="8dp">
-
-            <TextView
-            android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="2000 cal/day intake"
-
-                android:textColor="#fff" />
-        </android.support.v7.widget.CardView>
 
         <LinearLayout
             android:id="@+id/lltabs"
@@ -115,44 +90,34 @@
 
         </LinearLayout>
 
-        <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center_vertical"-->
-        <!--android:gravity="center_vertical"-->
-        <!--android:orientation="horizontal">-->
-
-        <!--<TextView-->
-        <!--android:id="@+id/itemCount"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:gravity="center_vertical"-->
-        <!--android:text="5 items in your criteria" />-->
-
-        <!--<com.jaredrummler.materialspinner.MaterialSpinner-->
-        <!--android:id="@+id/spinner"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:textColor="#000"-->
-        <!--android:layout_gravity="right"-->
-        <!--android:gravity="right|end"-->
-        <!--app:ms_arrow_tint="@color/colorPrimary" />-->
-        <!--</RelativeLayout>-->
-
-        <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="2dp"-->
-        <!--android:background="@color/colorPrimary"></LinearLayout>-->
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_food_item"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:foregroundGravity="center"
-            android:scrollbars="vertical" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/itemCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:text="5 items in your criteria" />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:gravity="right|end"
+                app:ms_arrow_tint="@color/colorPrimary" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary"></LinearLayout>
     </LinearLayout>
-
-
-</android.support.v7.widget.CardView>
+</FrameLayout>

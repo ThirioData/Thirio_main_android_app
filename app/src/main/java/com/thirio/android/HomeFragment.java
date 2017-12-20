@@ -228,4 +228,8 @@ public class HomeFragment extends Fragment implements ExpandingFragment.OnExpand
     public ViewPager returnViewpager() {
         return viewPager;
     }
+
+    public boolean onBackPressed() {
+        return ExpandingPagerFactory.onBackPressed(viewPager);
+    }
 }

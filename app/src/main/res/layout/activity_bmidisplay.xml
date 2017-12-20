@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_bmi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="0dp"
+    android:background="@null"
+    android:orientation="vertical"
+    android:padding="0dp">
+
+    <!--<android.support.design.widget.AppBarLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
+
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--android:id="@+id/toolbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="?attr/actionBarSize"-->
+    <!--android:background="?attr/colorPrimary"-->
+    <!--app:layout_scrollFlags="scroll|enterAlways"-->
+
+    <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"-->
+
+    <!--app:theme="@style/ToolBarStyle" />-->
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_bmi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:transitionName="@string/transition_image"
+            card_view:cardBackgroundColor="@color/colorPrimary"
+            card_view:cardCornerRadius="16dp"
+            card_view:cardElevation="3dp"
+            card_view:contentPadding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewBMI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your calculated BMI is 21"
+                    android:textAllCaps="true"
+                    android:textColor="#fff"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/textViewCal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="You should take 2000 cal/day"
+                    android:textAllCaps="true"
+                    android:textColor="#fff"
+                    android:textSize="22sp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <!--<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/card_view_login"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+
+        <!--android:layout_margin="4dp"-->
+        <!--android:gravity="center"-->
+        <!--card_view:cardBackgroundColor="#fff"-->
+        <!--card_view:cardCornerRadius="16dp"-->
+        <!--card_view:cardElevation="3dp"-->
+        <!--card_view:contentPadding="16dp">-->
+
+        <!--<RelativeLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--&gt;-->
+
+        <!--app:hintTextAppearance="@style/HintTextAppearance"-->
+        <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="16dp"-->
+        <!--android:hint="Age"-->
+        <!--app:hintAnimationEnabled="true">-->
+
+        <!--<android.support.design.widget.TextInputEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:fontFamily="sans-serif-light"-->
+        <!--android:imeOptions="actionNext"-->
+        <!--android:inputType="number"-->
+
+        <!--android:textAllCaps="true"-->
+        <!--android:textColor="?colorPrimary"/>-->
+
+        <!--</android.support.design.widget.TextInputLayout>-->
+        <!--<LinearLayout-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:id="@+id/llWeight"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+        <!--android:id="@+id/weightTextView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Weight"-->
+        <!--android:layout_marginRight="4dp"/>-->
+
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:fontFamily="sans-serif-light"-->
+        <!--android:textAllCaps="true"-->
+        <!--android:text="50kgs"-->
+        <!--android:textStyle="italic" />-->
+        <!--</LinearLayout>-->
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="EDIT"-->
+        <!--android:layout_toRightOf="@+id/llWeight"-->
+        <!--android:layout_marginLeft="50dp"-->
+
+        <!--android:textColor="@color/colorPrimary"/>-->
+        <!--<LinearLayout-->
+        <!--android:layout_below="@+id/llWeight"-->
+        <!--android:id="@+id/llHeight"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+        <!--android:id="@+id/heightTextView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="4dp"-->
+        <!--android:text="Height" />-->
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:fontFamily="sans-serif-light"-->
+        <!--android:textAllCaps="true"-->
+        <!--android:text="5 ft 11 in"-->
+        <!--android:textStyle="italic" />-->
+
+        <!--</LinearLayout>-->
+
+
+        <!--</RelativeLayout>-->
+        <!--</android.support.v7.widget.CardView>-->
+
+    </LinearLayout>
+
+
+    <!--<TextView-->
+    <!--android:id="@+id/proceed"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_margin="0dp"-->
+    <!--android:background="@color/colorPrimaryDark"-->
+    <!--android:elevation="16dp"-->
+    <!--android:gravity="center_horizontal"-->
+    <!--android:padding="16dp"-->
+    <!--android:text="PROCEED TO ORDER"-->
+    <!--android:textColor="#fff"-->
+    <!--android:textSize="16sp"-->
+    <!--android:textStyle="bold"></TextView>-->
+</RelativeLayout>

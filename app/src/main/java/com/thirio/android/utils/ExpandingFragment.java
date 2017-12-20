@@ -192,16 +192,17 @@ public abstract class ExpandingFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            if (isOpenend()) {
+//            if (isOpenend()) {
                 OnClick1(v);
 //                startActivity(new Intent(getActivity(), InfoActivity.class));
 //                if (mListener != null) {
 
 //                    mListener.onExpandingClick(v);
 //                }
-            } else {
-                open();
-            }
+//            }
+//            else {
+//                open();
+//            }
         }
     }
 

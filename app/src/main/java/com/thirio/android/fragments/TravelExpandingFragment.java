@@ -1,6 +1,7 @@
 package com.thirio.android.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -9,7 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
 import android.view.View;
 
-import com.thirio.android.InfoActivity;
+import com.thirio.android.Activities.BMI;
 import com.thirio.android.InfoActivityFitness;
 import com.thirio.android.InfoActivityFond;
 import com.thirio.android.InfoActivityFood;
@@ -65,7 +66,7 @@ public class TravelExpandingFragment extends ExpandingFragment {
     protected void OnClick1(View view) {
         Activity activity = getActivity();
 
-        if (travel.getName() == "Seychelles") {
+        if (travel.getName() == "Seychelles" && isOpenend()) {
 
             ActivityCompat.startActivity(activity,
                     InfoActivityFond.newInstance(activity, travel),
@@ -73,7 +74,7 @@ public class TravelExpandingFragment extends ExpandingFragment {
                             activity,
                             new Pair<>(view, getString(R.string.transition_image)))
                             .toBundle());
-        } else if (travel.getName() == "Shang Hai") {
+        } else if (travel.getName() == "Shang Hai" && isOpenend()) {
 
             ActivityCompat.startActivity(activity,
                     InfoActivityFood.newInstance(activity, travel),
@@ -81,7 +82,7 @@ public class TravelExpandingFragment extends ExpandingFragment {
                             activity,
                             new Pair<>(view, getString(R.string.transition_image)))
                             .toBundle());
-        } else if (travel.getName() == "New York") {
+        } else if (travel.getName() == "New York" && isOpenend()) {
 
             ActivityCompat.startActivity(activity,
                     InfoActivityFitness.newInstance(activity, travel),
@@ -89,15 +90,18 @@ public class TravelExpandingFragment extends ExpandingFragment {
                             activity,
                             new Pair<>(view, getString(R.string.transition_image)))
                             .toBundle());
-        } else {
+        } else if (travel.getName() == "castle") {
 
             System.out.println("default case");
-            ActivityCompat.startActivity(activity,
-                    InfoActivity.newInstance(activity, travel),
-                    ActivityOptionsCompat.makeSceneTransitionAnimation(
-                            activity,
-                            new Pair<>(view, getString(R.string.transition_image)))
-                            .toBundle());
+            startActivity(new Intent(activity, BMI.class));
+//            ActivityCompat.startActivity(activity,
+//                    InfoActivity.newInstance(activity, travel),
+//                    ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                            activity,
+//                            new Pair<>(view, getString(R.string.transition_image)))
+//                            .toBundle());
+        } else {
+            open();
         }
 //
     }
@@ -114,5 +118,6 @@ public class TravelExpandingFragment extends ExpandingFragment {
 //        }
 //    }
 //
+
 }
 

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_bmi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="0dp"
+    android:background="@null"
+    android:orientation="vertical"
+    android:padding="0dp">
+
+    <!--<android.support.design.widget.AppBarLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
+
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--android:id="@+id/toolbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="?attr/actionBarSize"-->
+    <!--android:background="?attr/colorPrimary"-->
+    <!--app:layout_scrollFlags="scroll|enterAlways"-->
+
+    <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"-->
+
+    <!--app:theme="@style/ToolBarStyle" />-->
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/llcards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--<ScrollView-->
+            <!--android:layout_width="-->
+            <!--android:layout_height="wrap_content">-->
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:layout_margin="4dp"
+        android:gravity="center"
+        card_view:cardBackgroundColor="#fff"
+        card_view:cardCornerRadius="16dp"
+        card_view:cardElevation="3dp"
+        card_view:contentPadding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="1600dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iconThirio"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/colorPrimary" />
+            <!--app:hintTextAppearance="@style/HintTextAppearance"-->
+
+            <TextView
+                android:id="@+id/sexTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sex" />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/spinnerSex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                app:ms_arrow_tint="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/ageTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Age" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="Years"
+                app:hintAnimationEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/ageEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:textAllCaps="true"
+                    android:textColor="#000" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/weightTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weight" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/weightTextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="kgs"
+                app:hintAnimationEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/weightEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:textAllCaps="true"
+                    android:textColor="#000"
+                    android:textStyle="italic" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/heightTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Height" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/ftTextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:hint="ft"
+                    app:hintAnimationEnabled="true">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/ftEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:textAllCaps="true"
+                        android:textColor="#000"
+                        android:textStyle="italic" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inTextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:hint="in"
+                    app:hintAnimationEnabled="true">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/inEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:textAllCaps="true"
+                        android:textColor="#000"
+                        android:textStyle="italic" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <!--<Button-->
+            <!--android:id="@+id/calculate"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:backgroundTint="@color/colorPrimary"-->
+            <!--android:text="Calculate BMI"-->
+            <!--android:textColor="#fff" />-->
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+            <!--</ScrollView>-->
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_bmi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_view_calc"
+                android:layout_gravity="center"
+
+                android:layout_marginLeft="4dp"
+
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:transitionName="@string/transition_image"
+                card_view:cardBackgroundColor="@color/colorPrimary"
+                card_view:cardCornerRadius="16dp"
+                card_view:cardElevation="3dp"
+                card_view:contentPadding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewBMI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BMI --.--"
+                        android:textAllCaps="true"
+                        android:textColor="#fff"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textViewCal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Calorie/day ----"
+                        android:textAllCaps="true"
+                        android:textColor="#fff"
+                        android:textSize="20sp" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/proceed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="0dp"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="16dp"
+        android:gravity="center_horizontal"
+        android:padding="16dp"
+        android:text="PROCEED TO ORDER"
+        android:textColor="#fff"
+        android:textSize="16sp"
+        android:textStyle="bold"></TextView>
+</RelativeLayout>

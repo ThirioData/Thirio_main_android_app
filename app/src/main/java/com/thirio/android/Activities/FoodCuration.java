@@ -1,139 +1,188 @@
 package com.thirio.android.Activities;
 
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.thirio.android.R;
-import com.thirio.android.fragments.foodCuration.Breakfast;
-import com.thirio.android.fragments.foodCuration.Dinner;
-import com.thirio.android.fragments.foodCuration.Lunch;
-import com.thirio.android.fragments.foodCuration.Snacks;
+import com.thirio.android.model.FoodItem;
+import com.thirio.android.utils.FontChangeCrawler;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FoodCuration extends AppCompatActivity {
 
-    private Toolbar toolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    public static final String JSON_URL = "https://quarkbackend.com/getfile/eternaldivine100/thirio";
+    public static final int BREAKFAST = 0;
+    public static final int LUNCH = 1;
+    public static final int SNACKS = 2;
+    public static final int DINNER = 3;
+    List<FoodItem> mDataset;
+    TextView lunch, breakfast, dinner, snacks;
+    //    MaterialSpinner spinner;
+    LinearLayout llTab;
+    int selected = 0;
 
+    //    private RecyclerView mRecyclerView;
+//    private RecyclerView.Adapter mAdapter;
+//    View v;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        WindowManager.LayoutParams params = getWindow().getAttributes();
+//        params.x = -20;
+        params.height = (9 * getWindowManager().getDefaultDisplay().getHeight()) / 10;
+        params.width = (9 * getWindowManager().getDefaultDisplay().getWidth()) / 10;
+//        params.y = -10;
+
+        this.getWindow().setAttributes(params);
+
+
         setContentView(R.layout.activity_food_curation);
+        llTab = (LinearLayout) findViewById(R.id.lltabs);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int width = displayMetrics.widthPixels;
+        System.out.println("yo " + width);
 
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
-        setupTabIcons();
-        tabLayout.setSelectedTabIndicatorHeight(0);
-        tabLayout.setBackgroundColor(Color.WHITE);
-        tabLayout.setTabTextColors(Color.BLACK,Color.parseColor("#FF7300"));
-        GradientDrawable gd = new GradientDrawable(
-                GradientDrawable.Orientation.TOP_BOTTOM,
-                new int[] {0xFF616261,0xFF131313});
-        gd.setCornerRadius(0f);
-        tabLayout.setBackgroundDrawable(gd);
-    }
-
-    private void setupTabIcons() {
-
-        tabLayout.getTabAt(0).setText("B'Fast");
-
-        tabLayout.getTabAt(1).setText("Lunch");
-        tabLayout.getTabAt(2).setText("Snacks");
-        tabLayout.getTabAt(3).setText("Dinner");
-    }
-
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPager.setOffscreenPageLimit(4);
-        adapter.addFragment(new Breakfast(), "ONE");
-        adapter.addFragment(new Lunch(), "TWO");
-        adapter.addFragment(new Snacks(), "THREE");
-        adapter.addFragment(new Dinner(), "FOUR");
-        viewPager.setAdapter(adapter);
-    }
-
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
-
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-//            return mFragmentTitleList.get(position);
-            return null;
-        }
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.dashboard1, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // action with ID action_refresh was selected
-//            case R.id.action_logout:
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(width / 8, 0, width / 8, 0);
+        llTab.setLayoutParams(layoutParams);
+        breakfast = (TextView) findViewById(R.id.breakfast);
+//        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_food_item);
 //
-//                SharedPreferences myprefs=getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
-//                SharedPreferences.Editor editor=myprefs.edit();
-//                editor.putBoolean(REGISTERED,false);
-//                editor.commit();
-//                startActivity(new Intent(Dashboard.this,HomeActivity.class));
-//                finish();
-//                Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT)
-//                        .show();
-//                break;
-//            // action with ID action_settings was selected
-//            case R.id.action_gallery:
-//                startActivity(new Intent(Dashboard.this,GridViewActivity.class));
-//                break;
-            default:
+//        GridLayoutManager gridlayoutManager = new GridLayoutManager(getBaseContext(), 1);
+//        mRecyclerView.setLayoutManager(gridlayoutManager);
+
+        FontChangeCrawler fontChanger = new FontChangeCrawler(getAssets(), "font/helveticaneuecond.ttf");
+        fontChanger.replaceFonts((ViewGroup) findViewById(R.id.foodCurationTop));
+        lunch = (TextView) findViewById(R.id.lunch);
+        snacks = (TextView) findViewById(R.id.snacks);
+        dinner = (TextView) findViewById(R.id.dinner);
+        createOnClickListeners();
+        select(BREAKFAST);
+//        spinner = (MaterialSpinner) findViewById(R.id.spinner);
+//        spinner.setItems("Main Course", "Appetizers", "Sweet");
+//        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+//            @Override
+//            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+//                Snackbar.make(view, item + " selected", Snackbar.LENGTH_LONG).show();
+//            }
+//        });
+//        sendRequest();
+    }
+
+    public void createOnClickListeners() {
+        breakfast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                select(BREAKFAST);
+            }
+        });
+
+        lunch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                select(LUNCH);
+            }
+        });
+        dinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                select(DINNER);
+            }
+        });
+        snacks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                select(SNACKS);
+            }
+        });
+    }
+
+    public void initializeSel() {
+        breakfast.setBackground(getDrawable(R.drawable.leftroundedcorner));
+        lunch.setBackground(getDrawable(R.drawable.nocorners));
+        snacks.setBackground(getDrawable(R.drawable.nocorners));
+        dinner.setBackground(getDrawable(R.drawable.rightroundedcorner));
+
+        breakfast.setTextColor(Color.BLACK);
+        lunch.setTextColor(Color.BLACK);
+        snacks.setTextColor(Color.BLACK);
+        dinner.setTextColor(Color.BLACK);
+
+    }
+
+    public void select(int pos) {
+        selected = pos;
+        initializeSel();
+        switch (selected) {
+            case BREAKFAST:
+                breakfast.setTextColor(Color.WHITE);
+                breakfast.setBackground(getDrawable(R.drawable.leftroundedcornerselected));
+                break;
+            case LUNCH:
+                lunch.setTextColor(Color.WHITE);
+                lunch.setBackground(getDrawable(R.drawable.nocornersselected));
+                break;
+            case SNACKS:
+                snacks.setTextColor(Color.WHITE);
+                snacks.setBackground(getDrawable(R.drawable.nocornersselected));
+                break;
+            case DINNER:
+                dinner.setTextColor(Color.WHITE);
+                dinner.setBackground(getDrawable(R.drawable.rightroundedcornerselected));
                 break;
         }
-
-        return true;
     }
+
+
+//    private void sendRequest() {
+//        final ProgressDialog pDialog = new ProgressDialog(this);
+//        pDialog.setMessage("Loading...");
+//        pDialog.show();
+//
+//
+//
+//        StringRequest stringRequest = new StringRequest(JSON_URL,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//
+//                        System.out.println(response);
+//                        JsonParseFood pj = new JsonParseFood();
+//                        pj.parseJSONteam(response);
+//                        mDataset = pj.getData();
+//                        mAdapter = new FoodCurationAdapter(mDataset);
+//                        mRecyclerView.setAdapter(mAdapter);
+//                        pDialog.dismiss();
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//
+//                    }
+//                });
+////        RequestQueue requestQueue=AppController.getInstance().getRequestQueue();
+////// Adding request to request queue
+////        requestQueue.add(stringRequest);
+//
+////        AppController.getInstance().addToRequestQueue(stringRequest);
+//
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(stringRequest);
+//
+//    }
+
 }

@@ -12,12 +12,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.felix.bottomnavygation.BottomNav;
 import com.felix.bottomnavygation.ItemNav;
+import com.thirio.android.fragments.FoodCuration;
 import com.thirio.android.fragments.foodCuration.Breakfast;
 import com.thirio.android.utils.SimpleGestureFilter;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SimpleGestureFilter.SimpleGestureListener {
     //    @BindView(R.id.viewPager)
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
         llBottom1.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height / 3));
+
         setupviews();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -122,9 +125,35 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
 //        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
+
+    @Override
+    public void onBackPressed() {
+
+        List fragmentList = getSupportFragmentManager().getFragments();
+
+        boolean handled = false;
+        int i = fragmentList.size();
+        int k = 0;
+        for (k = 0; k < i; k++) {
+            Fragment f = (Fragment) fragmentList.get(k);
+            if (f instanceof HomeFragment) {
+                handled = ((HomeFragment) f).onBackPressed();
+
+                if (handled) {
+                    break;
+                }
+            }
+        }
+
+        if (!handled) {
+            super.onBackPressed();
+        }
+    }
+
     @Override
     public void onDoubleTap() {
-        Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show();
+
+//        Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show();
     }
 
     //    public void setupref() {
@@ -133,12 +162,13 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
 //        setUiPageViewController();
 //
 //    }
-    @Override
-    public void onBackPressed() {
+//    @Override
+//    public void onBackPressed() {
 
-            super.onBackPressed();
+//        Snackbar.make(findViewById(R.id.back), "Press back again to exit", Snackbar.LENGTH_LONG).show();
 
-    }
+//            super.onBackPressed();
+//    }
 //
 //    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 //    private void setupWindowAnimations() {
@@ -297,7 +327,7 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
                 break;
             case 1:
                 // Action to perform when Bag Menu item is selected.
-                pushFragment(new HomeFragment());
+                pushFragment(new FoodCuration());
                 break;
             case 2:
                 // Action to perform when Account Menu item is selected.
@@ -322,7 +352,7 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
                 break;
             case R.id.action_fb:
                 // Action to perform when Bag Menu item is selected.
-                pushFragment(new HomeFragment());
+                pushFragment(new FoodCuration());
                 break;
             case R.id.action_account:
                 // Action to perform when Account Menu item is selected.
