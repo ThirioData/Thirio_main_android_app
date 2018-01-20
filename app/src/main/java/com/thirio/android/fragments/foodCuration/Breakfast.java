@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.thirio.android.R;
 
@@ -25,6 +24,7 @@ public class Breakfast extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    int id;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -68,15 +68,16 @@ public class Breakfast extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_breakfast, container, false);
-        final LinearLayout footer=(LinearLayout)v.findViewById(R.id.footer);
-        footer.setVisibility(View.GONE);
-        LinearLayout first=(LinearLayout)v.findViewById(R.id.first);
-        first.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                footer.setVisibility(View.VISIBLE);
-            }
-        });
+        id=getArguments().getInt("id");
+//        final LinearLayout footer=(LinearLayout)v.findViewById(R.id.footer);
+//        footer.setVisibility(View.GONE);
+//        LinearLayout first=(LinearLayout)v.findViewById(R.id.first);
+//        first.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                footer.setVisibility(View.VISIBLE);
+//            }
+//        });
         return v;
     }
 

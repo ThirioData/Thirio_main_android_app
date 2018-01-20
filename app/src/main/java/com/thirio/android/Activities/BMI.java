@@ -8,15 +8,16 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.roger.gifloadinglibrary.GifLoadingView;
 import com.thirio.android.R;
+import com.thirio.android.database.DbMethods;
 import com.thirio.android.utils.FontChangeCrawler;
 
 import java.text.DecimalFormat;
@@ -30,10 +31,13 @@ public class BMI extends AppCompatActivity {
     TextView wt, ht;
     TextInputEditText ft, in, kg, age;
     TextView proceed, bmi, cal;
+    double heightInM;
     MaterialSpinner spinner;
     int spinnerVal = 0;
+    String name,mobile,sex;
     private GifLoadingView mGifLoadingView;
-
+    double cal1;
+    DbMethods dbMethods;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         WindowManager.LayoutParams params = getWindow().getAttributes();
@@ -72,29 +76,27 @@ public class BMI extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BMI.this, FoodCuration.class);
+                intent.putExtra("CALORIE",new DecimalFormat("####").format(cal1)+"");
 
+                dbMethods=new DbMethods(BMI.this);
+                long id;
+                id = dbMethods.insertUser(name, sex, heightInM, Integer.parseInt(kg.getText().toString()), Integer.parseInt(age.getText().toString()), mobile);
+
+
+                    Log.d("value",cal1+"");
                 ActivityOptions options = ActivityOptions
                         .makeSceneTransitionAnimation(BMI.this, findViewById(R.id.card_view_bmi), "transition_image");
+                intent.putExtra("id",id);
                 startActivity(intent, options.toBundle());
 
             }
         });
-        spinner = (MaterialSpinner) findViewById(R.id.spinnerSex);
-        spinner.setItems("Male", "Female");
-        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
-            @Override
-            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-//                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
-                spinnerVal = position;
-                isDone();
-            }
-        });
-        ImageView rocketImage = (ImageView) findViewById(R.id.iconThirio);
-        rocketImage.setBackgroundResource(R.drawable.loadingicon);
-        animationDrawable = (AnimationDrawable) rocketImage.getBackground();
-        animationDrawable.start();
-        intializeWatchers();
+      intializeWatchers();
+      Intent intent=getIntent();
+      name=intent.getStringExtra("name");
+      sex=intent.getStringExtra("sex");
+      mobile=intent.getStringExtra("mobile");
 
 //        mGifLoadingView = new GifLoadingView();
 //        findViewById(R.id.calculate).setOnClickListener(
@@ -216,9 +218,10 @@ public class BMI extends AppCompatActivity {
     }
 
     void calcBMI() {
-        double BMI = (Float.valueOf(kg.getText().toString()) / ((Float.valueOf(ft.getText().toString()) + Float.valueOf(in.getText().toString()) / 12) * .3048));
+       heightInM =((Float.valueOf(ft.getText().toString()) + (Float.valueOf(in.getText().toString())) / 12) * .3048);
+        double BMI = (Float.valueOf(kg.getText().toString()) /heightInM );
         bmi.setText("BMI " + new DecimalFormat("##.##").format(BMI));
-        double cal1 = 10 * Integer.valueOf(kg.getText().toString()) + 6.25 * ((Float.valueOf(ft.getText().toString()) + Float.valueOf(in.getText().toString()) / 12)) * 30.48 - 5 * Integer.valueOf(age.getText().toString());
+         cal1= 10 * Integer.valueOf(kg.getText().toString()) + 6.25 * heightInM * 100 - 5 * Integer.valueOf(age.getText().toString());
 
         if (spinnerVal == 0) {
             cal1 = cal1 + 5;
@@ -229,4 +232,5 @@ public class BMI extends AppCompatActivity {
         cal.setText("CALORIE/DAY " + new DecimalFormat("####").format(cal1));
 
     }
+
 }

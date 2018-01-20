@@ -346,16 +346,13 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
 
         switch (item.getItemId()) {
             case R.id.action_home:
-                // Action to perform when Home Menu item is selected.
                 home = new HomeFragment();
                 pushFragment(home);
                 break;
             case R.id.action_fb:
-                // Action to perform when Bag Menu item is selected.
                 pushFragment(new FoodCuration());
                 break;
             case R.id.action_account:
-                // Action to perform when Account Menu item is selected.
                 pushFragment(new Breakfast());
                 break;
         }

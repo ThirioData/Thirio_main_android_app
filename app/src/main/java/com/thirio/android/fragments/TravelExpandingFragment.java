@@ -10,7 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
 import android.view.View;
 
-import com.thirio.android.Activities.BMI;
+import com.thirio.android.Activities.UserDetails;
 import com.thirio.android.InfoActivityFitness;
 import com.thirio.android.InfoActivityFond;
 import com.thirio.android.InfoActivityFood;
@@ -93,7 +93,7 @@ public class TravelExpandingFragment extends ExpandingFragment {
         } else if (travel.getName() == "castle") {
 
             System.out.println("default case");
-            startActivity(new Intent(activity, BMI.class));
+            startActivity(new Intent(activity, UserDetails.class));
 //            ActivityCompat.startActivity(activity,
 //                    InfoActivity.newInstance(activity, travel),
 //                    ActivityOptionsCompat.makeSceneTransitionAnimation(
