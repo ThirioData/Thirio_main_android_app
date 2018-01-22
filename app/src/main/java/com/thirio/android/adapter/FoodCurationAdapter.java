@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -130,13 +129,13 @@ public class FoodCurationAdapter extends RecyclerView.Adapter<FoodCurationAdapte
 //    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public Button add;
+        public TextView add;
         public TextView name;
         public ImageView image;
         public TextView desc;
         public TextView cusine;
         public ViewFlipper viewFlipper;
-        LinearLayout front,back;
+//        LinearLayout front,back;
         public ViewHolder(View v) {
             super(v);
 //            int pos = getAdapterPosition();
@@ -146,8 +145,8 @@ public class FoodCurationAdapter extends RecyclerView.Adapter<FoodCurationAdapte
             name = v.findViewById(R.id.itemName);
             image = v.findViewById(R.id.itempic);
             viewFlipper = (ViewFlipper) v.findViewById(R.id.viewflipper);
-            front=v.findViewById(R.id.llFront);
-            back=v.findViewById(R.id.llBack);
+//            front=v.findViewById(R.id.llFront);
+//            back=v.findViewById(R.id.llBack);
 
             System.out.println("max height = "+image.getMaxHeight()+ "max w"+ image.getMaxWidth());
 //            }

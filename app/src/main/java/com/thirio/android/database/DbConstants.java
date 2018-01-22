@@ -8,7 +8,7 @@ public interface DbConstants {
     String INTEGER = " INTEGER ";
     String TEXT = " TEXT ";
     String REAL =  " REAL ";
-    String FLOAT = " FLOAT ";
+    String DECIMAL = " DECIMAL(18,5) ";
     String DEFAULT = " DEFAULT ";
 
 
@@ -26,7 +26,7 @@ public interface DbConstants {
             COL_SEX + TEXT,
             COL_AGE + INTEGER,
             COL_CONTACT + TEXT,
-            COL_HEIGHT + FLOAT,
+            COL_HEIGHT + DECIMAL,
             COL_WEIGHT + INTEGER
     };
 

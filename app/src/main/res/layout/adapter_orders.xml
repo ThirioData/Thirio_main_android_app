@@ -11,10 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
+        android:orientation="horizontal"
+        android:animateLayoutChanges="true"
         android:background="@drawable/border_drawable">
         <LinearLayout
             android:padding="8dp"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="10"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 <TextView
@@ -50,5 +53,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/sides"/>
         </LinearLayout>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@drawable/delete"
+            android:id="@+id/delete"
+            android:layout_gravity="center_vertical"
+            android:tint="@color/colorPrimaryDark"/>
     </LinearLayout>
+
+
 </android.support.constraint.ConstraintLayout>

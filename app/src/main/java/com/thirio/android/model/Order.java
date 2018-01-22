@@ -12,6 +12,15 @@ public class Order {
     String breads;
     int diet;
 
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+    }
+
+    int orderID;
     public int getDiet() {
         return diet;
     }

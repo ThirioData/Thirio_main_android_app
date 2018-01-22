@@ -35,7 +35,7 @@ import static com.thirio.android.network.URLs.LUNCH_SIDES;
  * create an instance of this fragment.
  */
 public class Lunch extends Fragment{
-    public static final int MAINCOURSE=0,SIDES=1,SALADS=2,BREADS=3;
+    public static final int MAINCOURSE=0,SIDES=1,SALADS=2,BREADS=3,CONFIRM=4;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,9 +45,6 @@ public class Lunch extends Fragment{
     String itemNameSalad,itemNameMainCourse,itemNameSides,itemNameBreads;
     CardView sides,maincourse,salads,breads,proceed;
     ImageView sidesImg,maincourseImg,saladsImg,breadsImg;
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
@@ -55,15 +52,6 @@ public class Lunch extends Fragment{
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Lunch.
-     */
-    // TODO: Rename and change types and number of parameters
     public static Lunch newInstance(String param1, String param2) {
         Lunch fragment = new Lunch();
         Bundle args = new Bundle();
@@ -76,10 +64,7 @@ public class Lunch extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -132,7 +117,7 @@ public class Lunch extends Fragment{
                 DbMethods dbMethods=new DbMethods(getContext());
                 dbMethods.insertOrderNotPaid(id,itemNameMainCourse,itemNameSalad,itemNameSides,itemNameBreads,2);
                 Intent intent=new Intent(getContext(), ConfirmOrder.class);
-                startActivity(intent);
+                startActivityForResult(intent,CONFIRM);
             }
         });
 
@@ -241,6 +226,26 @@ public class Lunch extends Fragment{
                 Glide.with(getContext()).load(itemImage).placeholder(R.drawable.loading)
                         .diskCacheStrategy(DiskCacheStrategy.ALL).into(breadsImg);
                 breadsImg.setVisibility(View.VISIBLE);
+            }
+        }
+        if(requestCode==CONFIRM){
+            if(resultCode==0){
+                //fail
+                getActivity().setResult(0);
+                getActivity().finish();
+            }
+            else if(resultCode==1){
+                //succ
+
+                getActivity().setResult(1);
+                getActivity().finish();
+            }
+            else if(resultCode==2){
+                //order more
+
+                getActivity().setResult(2);
+                getActivity().finish();
+
             }
         }
     }

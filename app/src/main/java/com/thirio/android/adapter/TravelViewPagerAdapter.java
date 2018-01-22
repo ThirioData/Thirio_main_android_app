@@ -3,7 +3,7 @@ package com.thirio.android.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
-import com.thirio.android.fragments.TravelExpandingFragment;
+import com.thirio.android.fragments.HomePage.TravelExpandingFragment;
 import com.thirio.android.model.Travel;
 import com.thirio.android.utils.ExpandingViewPagerAdapter;
 

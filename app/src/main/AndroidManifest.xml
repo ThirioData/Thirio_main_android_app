@@ -90,9 +90,16 @@
             android:name=".Activities.UserDetails"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen1" />
-        <activity android:name=".Activities.ConfirmOrder"
+        <activity
+            android:name=".Activities.ConfirmOrder"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen1" ></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen1" />
+        <activity android:name=".Activities.SamplePaymentPortal"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen1" />
+        <activity android:name=".Activities.PaymentStatus"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen2" ></activity>
     </application>
 
 </manifest>

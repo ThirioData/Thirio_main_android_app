@@ -38,6 +38,8 @@ public class BMI extends AppCompatActivity {
     private GifLoadingView mGifLoadingView;
     double cal1;
     DbMethods dbMethods;
+    public static int CURATION=2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         WindowManager.LayoutParams params = getWindow().getAttributes();
@@ -87,7 +89,10 @@ public class BMI extends AppCompatActivity {
                 ActivityOptions options = ActivityOptions
                         .makeSceneTransitionAnimation(BMI.this, findViewById(R.id.card_view_bmi), "transition_image");
                 intent.putExtra("id",id);
-                startActivity(intent, options.toBundle());
+                Bundle bundle=new Bundle();
+                bundle.putAll(options.toBundle());
+                intent.putExtras(bundle);
+                startActivityForResult(intent, CURATION);
 
             }
         });
@@ -233,4 +238,26 @@ public class BMI extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==CURATION){
+            if(resultCode==1){
+                //succ in payment
+                setResult(1);
+                finish();
+            }
+            if(resultCode==0){
+             //fail in payment
+                setResult(1);
+                finish();
+            }
+            if (resultCode==2){
+                //order more
+                setResult(2);
+                finish();
+            }
+        }
+
+    }
 }

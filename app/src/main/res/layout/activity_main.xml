@@ -31,7 +31,6 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/llbottom"
         android:layout_marginTop="?attr/actionBarSize"
-        android:animateLayoutChanges="true"
         android:orientation="vertical">
 
     </FrameLayout>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatAutoCompleteTextView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -26,6 +27,8 @@ public class UserDetails extends AppCompatActivity {
     DbMethods dbMethods;
     AppCompatAutoCompleteTextView name,contact;
     TextView proceed;
+    public static int BMI=1;
+    public static int CURATION=2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +89,7 @@ public class UserDetails extends AppCompatActivity {
                     intent.putExtra("name", name.getText().toString());
                     intent.putExtra("mobile", contact.getText().toString());
                     intent.putExtra("sex", spinnerVal);
-                    startActivity(intent);}
+                    startActivityForResult(intent,BMI);}
                     else{
                         int i=dbMethods.ifAlreadyExists(name.getText().toString());
                         Intent food=new Intent(UserDetails.this,FoodCuration.class);
@@ -94,7 +97,10 @@ public class UserDetails extends AppCompatActivity {
                         int wt=dbMethods.getWeight(name.getText().toString());
                         int age=dbMethods.getAge(name.getText().toString());
                         String sex=dbMethods.getSex(name.getText().toString());
-                        double cal1= 10 * wt + 6.25 * ht * 100 - 5 * age;
+                        double cal1= 10 * wt + 6.25 * ht  - 5 * age;
+
+                        Log.d("SEX, AGE, WRIGHT HEIGHT",sex+" "+age+" "+wt+ " "+ht);
+
                         if (sex.equals("Male")) {
                             cal1 = cal1 + 5;
 
@@ -103,11 +109,35 @@ public class UserDetails extends AppCompatActivity {
                         }
                         food.putExtra("CALORIE",new DecimalFormat("####").format(cal1)+"");
                         food.putExtra("id",i);
-                        startActivity(food);
+                        startActivityForResult(food,CURATION);
                     }
                 }
             }
         });
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==BMI || requestCode==CURATION){
+            if(resultCode==1){
+                Intent intent=new Intent(UserDetails.this,PaymentStatus.class);
+                intent.putExtra("STATUS",1);
+                startActivity(intent);
+                finish();
+            }
+            else if(resultCode==0){
+                Intent intent=new Intent(UserDetails.this,PaymentStatus.class);
+                intent.putExtra("STATUS",0);
+                startActivity(intent);
+                finish();
+            }
+            else if(resultCode==2){
+                finish();
+                startActivity(new Intent(UserDetails.this,UserDetails.class));
+            }
+        }
     }
 }

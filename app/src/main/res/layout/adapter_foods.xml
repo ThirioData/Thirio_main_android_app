@@ -64,33 +64,39 @@
 
             </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/llBack"
-                android:orientation="horizontal">
+                android:id="@+id/llBack">
+
+                <TextView
+                    android:id="@+id/add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/colorExtra"
+                    android:text="A\nD\nD"
+                    android:padding="4dp"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintLeft_toRightOf="parent"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/ItemDesc"
                     style="?android:textAppearanceSmall"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="10"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
                     android:text="Item desc"
+                    android:textColor="#80ffffff"
+                    app:layout_constraintRight_toRightOf="@+id/add" />
 
-                    android:textColor="#80ffffff" />
 
-                <Button
-                    android:textColor="#fff"
-                    android:backgroundTint="@color/colorExtra"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="0dp"
-                    android:id="@+id/add"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="Add" />
-
-            </LinearLayout>
-
+            </android.support.constraint.ConstraintLayout>
         </ViewFlipper>
 </android.support.v7.widget.CardView>

@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.thirio.android.R;
-import com.thirio.android.fragments.MenuFragment;
+import com.thirio.android.fragments.SideMenu.MenuFragment;
 import com.thirio.android.fragments.foodCuration.Breakfast;
 import com.thirio.android.fragments.foodCuration.Dinner;
 import com.thirio.android.fragments.foodCuration.Lunch;

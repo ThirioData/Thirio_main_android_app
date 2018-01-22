@@ -1,4 +1,4 @@
-package com.thirio.android.fragments;
+package com.thirio.android.fragments.HomePage;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,6 +15,8 @@ import com.thirio.android.InfoActivityFitness;
 import com.thirio.android.InfoActivityFond;
 import com.thirio.android.InfoActivityFood;
 import com.thirio.android.R;
+import com.thirio.android.fragments.FragmentBottom;
+import com.thirio.android.fragments.FragmentTop;
 import com.thirio.android.model.Travel;
 import com.thirio.android.utils.ExpandingFragment;
 /**

@@ -10,21 +10,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.thirio.android.R;
-import com.thirio.android.database.DbMethods;
 import com.thirio.android.model.Order;
 import com.thirio.android.utils.FontChangeCrawler;
 
 import java.util.List;
 
 /**
- * Created by abhinav on 20/1/18.
+ * Created by abhinav on 22/1/18.
  */
 
-public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder> {
+
+public class OrderHomePageAdapter extends RecyclerView.Adapter<OrderHomePageAdapter.ViewHolder> {
     Context context;
     private List<Order> mDataset;
 
-    public OrdersAdapter(List<Order> myDataset, Context context) {
+    public OrderHomePageAdapter(List<Order> myDataset, Context context) {
         mDataset = myDataset;
         this.context = context;
     }
@@ -41,19 +41,19 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
     }
 
     @Override
-    public OrdersAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                             int viewType) {
-        OrdersAdapter.ViewHolder vh = null;
-    View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_orders, parent, false);
-        vh = new OrdersAdapter.ViewHolder(v);
+    public OrderHomePageAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                       int viewType) {
+        OrderHomePageAdapter.ViewHolder vh = null;
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_my_orders, parent, false);
+        vh = new OrderHomePageAdapter.ViewHolder(v);
 
         FontChangeCrawler fontChanger = new FontChangeCrawler(context.getAssets(), "font/helveticaneuecond.ttf");
         fontChanger.replaceFonts((ViewGroup)v);
         return vh;
-   }
+    }
 
     @Override
-    public void onBindViewHolder(OrdersAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(OrderHomePageAdapter.ViewHolder holder, final int position) {
 
         holder.name.setText(mDataset.get(position).getName());
         int d=mDataset.get(position).getDiet();
@@ -77,16 +77,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
         holder.breads.setText(mDataset.get(position).getBreads());
         holder.name.setText(mDataset.get(position).getName());
         holder.sides.setText(mDataset.get(position).getSides());
-        holder.del.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-                DbMethods dbMethods=new DbMethods(context);
-                dbMethods.deleteOrderNotPaid(mDataset.get(position).getOrderID());
-                mDataset.remove(position);
-                OrdersAdapter.this.notifyDataSetChanged();
-            }
-        });
     }
 
     @Override
@@ -110,7 +101,6 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
             breads=v.findViewById(R.id.breads);
             salads=v.findViewById(R.id.salads);
             sides=v.findViewById(R.id.sides);
-            del=v.findViewById(R.id.delete);
         }
     }
 

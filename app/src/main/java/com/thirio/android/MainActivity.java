@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import com.felix.bottomnavygation.BottomNav;
 import com.felix.bottomnavygation.ItemNav;
 import com.thirio.android.fragments.FoodCuration;
+import com.thirio.android.fragments.HomePage.MyOrders;
+import com.thirio.android.fragments.HomePage.Users;
 import com.thirio.android.fragments.foodCuration.Breakfast;
 import com.thirio.android.utils.SimpleGestureFilter;
 
@@ -325,13 +327,13 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
                 home = new HomeFragment();
                 pushFragment(home);
                 break;
-            case 1:
-                // Action to perform when Bag Menu item is selected.
-                pushFragment(new FoodCuration());
-                break;
             case 2:
+                // Action to perform when Bag Menu item is selected.
+                pushFragment(new MyOrders());
+                break;
+            case 3:
                 // Action to perform when Account Menu item is selected.
-                pushFragment(new Breakfast());
+                pushFragment(new Users());
                 break;
         }
     }

@@ -21,7 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.thirio.android.JSON.JsonParseFood;
 import com.thirio.android.R;
 import com.thirio.android.adapter.FoodCurationAdapter;
-import com.thirio.android.fragments.MenuFragment;
+import com.thirio.android.fragments.SideMenu.MenuFragment;
 import com.thirio.android.model.FoodItem;
 
 import java.util.List;
