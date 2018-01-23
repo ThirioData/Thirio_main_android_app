@@ -46,7 +46,7 @@ public class MyOrders extends Fragment {
     public void setData(){
         DbMethods dbMethods=new DbMethods(getContext());
 
-        mDataset=dbMethods.getAllOrders();
+        mDataset=dbMethods.getAllOrdersPlaced();
         mAdapter=new OrderHomePageAdapter(mDataset,getContext());
         mRecyclerView.setAdapter(mAdapter);
 

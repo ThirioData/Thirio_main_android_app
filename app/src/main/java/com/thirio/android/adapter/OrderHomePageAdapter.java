@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.thirio.android.R;
@@ -82,16 +81,15 @@ public class OrderHomePageAdapter extends RecyclerView.Adapter<OrderHomePageAdap
 
     @Override
     public int getItemCount() {
-
+        if(mDataset!=null)
         return mDataset.size();
-//        else return 0;
+        else return 0;
     }
 
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView name,diet,maincourse,breads,salads,sides;
-        ImageView del;
         public ViewHolder(View v) {
             super(v);
 

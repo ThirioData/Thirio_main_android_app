@@ -80,6 +80,12 @@ public class UserDetails extends AppCompatActivity {
                         numberlayout.setError("Enter mobile number");
                     if(name.getText().toString().isEmpty())
                         namelayout.setError("Enter name");
+
+                }
+                else if(contact.getText().toString().length()!=10||contact.getText().toString().startsWith("0")||contact.getText().toString().startsWith("1")||contact.getText().toString().startsWith("2")||contact.getText().toString().startsWith("3")||contact.getText().toString().startsWith("4")){
+                    TextInputLayout numberlayout;
+                    numberlayout=(TextInputLayout)findViewById(R.id.mobileTextInputLayout);
+                    numberlayout.setError("Enter correct mobile number");
                 }
                 else {
                     DbMethods dbMethods=new DbMethods(UserDetails.this);

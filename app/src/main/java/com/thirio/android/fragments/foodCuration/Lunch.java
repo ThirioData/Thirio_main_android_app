@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.util.Log;
@@ -114,10 +115,20 @@ public class Lunch extends Fragment{
         proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DbMethods dbMethods=new DbMethods(getContext());
-                dbMethods.insertOrderNotPaid(id,itemNameMainCourse,itemNameSalad,itemNameSides,itemNameBreads,2);
-                Intent intent=new Intent(getContext(), ConfirmOrder.class);
-                startActivityForResult(intent,CONFIRM);
+                if(maincourseImg.getVisibility()==View.GONE){
+                    Snackbar.make(getView(),"Select MainCourse to proceed",Snackbar.LENGTH_SHORT).show();
+                }
+                else if(sidesImg.getVisibility()==View.GONE){
+                    Snackbar.make(getView(),"Select Sides to proceed",Snackbar.LENGTH_SHORT).show();
+
+                }
+                else {
+
+                    DbMethods dbMethods = new DbMethods(getContext());
+                    dbMethods.insertOrderNotPaid(id, itemNameMainCourse, itemNameSalad, itemNameSides, itemNameBreads, 2);
+                    Intent intent = new Intent(getContext(), ConfirmOrder.class);
+                    startActivityForResult(intent, CONFIRM);
+                }
             }
         });
 

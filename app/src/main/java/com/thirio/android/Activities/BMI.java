@@ -159,6 +159,9 @@ public class BMI extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                if(Integer.parseInt(ft.getText().toString())>7){
+                    ft.setText("7");
+                }
                 isDone();
             }
         });
@@ -175,7 +178,11 @@ public class BMI extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                if(Integer.parseInt(in.getText().toString())>11){
+                    in.setText("11");
+                }
                 isDone();
+
             }
         });
 
@@ -192,6 +199,9 @@ public class BMI extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                if(Integer.parseInt(kg.getText().toString())>130){
+                    kg.setText("130");
+                }
                 isDone();
             }
         });
@@ -209,6 +219,9 @@ public class BMI extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                if(Integer.parseInt(age.getText().toString())>80){
+                    age.setText("80");
+                }
                 isDone();
             }
         });

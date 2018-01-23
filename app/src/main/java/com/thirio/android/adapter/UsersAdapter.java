@@ -2,10 +2,10 @@ package com.thirio.android.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.thirio.android.R;
@@ -51,26 +51,30 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(UsersAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(UsersAdapter.ViewHolder holder, int position) {
         holder.name.setText(mDataset.get(position).getName());
-        holder.age.setText(mDataset.get(position).getAge()+"");
-        holder.height.setText(mDataset.get(position).getHeight()+"");
-        holder.weight.setText(mDataset.get(position).getWeight()+"");
+        Log.d("USER","bind view holder "+position);
+        holder.age.setText(mDataset.get(position).getAge()+" years");
+        holder.height.setText(mDataset.get(position).getHeight()+" meters");
+        holder.weight.setText(mDataset.get(position).getWeight()+" kgs");
 
     }
 
     @Override
     public int getItemCount() {
-        if (mDataset!=null)
-        return mDataset.size();
-        else return 0;
-    }
+        if (mDataset != null) {
+            Log.d("SIZE",mDataset.size()+"");
+            return mDataset.size();
 
+        } else {
+            return 0;
+
+        }
+    }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView name,age,height,weight;
-        ImageView del;
         public ViewHolder(View v) {
             super(v);
 

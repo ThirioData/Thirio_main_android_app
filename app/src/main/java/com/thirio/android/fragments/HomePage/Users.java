@@ -49,7 +49,7 @@ public class Users extends Fragment {
         mDataset=dbMethods.getAllUserDetails();
         mAdapter=new UsersAdapter(mDataset,getContext());
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
+//        mAdapter.notifyDataSetChanged();
 
 
     }

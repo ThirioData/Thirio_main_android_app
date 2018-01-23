@@ -67,6 +67,7 @@ public class DbMethods implements DbConstants {
         String query="SELECT * FROM "+ TBL_USER;
         Cursor cursor=db.rawQuery(query,null);
         if(cursor.moveToFirst()){
+            Log.d(TAG,"user details back");
             do{
                 User u=new User();
                 String name=cursor.getString(cursor.getColumnIndex(COL_NAME));
@@ -75,9 +76,12 @@ public class DbMethods implements DbConstants {
                 u.setHeight(cursor.getInt(cursor.getColumnIndex(COL_HEIGHT)));
                 u.setUserID(cursor.getInt(cursor.getColumnIndex(COL_ID)));
                 u.setWeight(cursor.getInt(cursor.getColumnIndex(COL_WEIGHT)));
+                users.add(u);
             }while (cursor.moveToNext());
             return users;
         }
+
+        Log.d(TAG,"user details null");
         return null;
     }
     public  List<String> getAllContacts(){
@@ -146,6 +150,37 @@ public class DbMethods implements DbConstants {
     }
     public List<Order> getAllOrders(){
         String query="SELECT * FROM "+ TBL_DIET_USER_YET_TO_BE_FINALIZED ;
+        Cursor cursor=db.rawQuery(query,null);
+        List<Order> orders=new ArrayList<>();
+        if(cursor.moveToFirst()){
+            do {
+                Order o= new Order();
+                o.setBreads(cursor.getString(cursor.getColumnIndex(COL_BREADS)));
+                o.setMainCourse(cursor.getString(cursor.getColumnIndex(COL_MAIN_COURSE)));
+                o.setSalads(cursor.getString(cursor.getColumnIndex(COL_SALAD)));
+                o.setSides(cursor.getString(cursor.getColumnIndex(COL_SIDES)));
+                o.setDiet(cursor.getInt(cursor.getColumnIndex(COL_DIET)));
+                o.setOrderID(cursor.getInt(cursor.getColumnIndex(COL_ID)));
+                int id=cursor.getInt(cursor.getColumnIndex(COL_USERID));
+
+                Log.d("USER ID",id+"");
+                o.setUserid(id);
+                String q="SELECT * FROM "+ TBL_USER+" WHERE "+ COL_ID + " = "+id;
+                Cursor c=db.rawQuery(q,null);
+                if(c.moveToFirst()){
+                    o.setName(c.getString(c.getColumnIndex(COL_NAME)));
+                }
+                else{
+                    o.setName("Unknown");
+                }
+                orders.add(o);
+            }while (cursor.moveToNext());
+            return orders;
+        }
+        return null;
+    }
+    public List<Order> getAllOrdersPlaced(){
+        String query="SELECT * FROM "+ TBL_DIET_USER;
         Cursor cursor=db.rawQuery(query,null);
         List<Order> orders=new ArrayList<>();
         if(cursor.moveToFirst()){
