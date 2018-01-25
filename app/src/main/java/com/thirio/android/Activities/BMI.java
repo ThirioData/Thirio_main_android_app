@@ -178,7 +178,7 @@ public class BMI extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(Integer.parseInt(in.getText().toString())>11){
+                if(!in.getText().toString().isEmpty() && Integer.parseInt(in.getText().toString())>11){
                     in.setText("11");
                 }
                 isDone();
@@ -199,7 +199,7 @@ public class BMI extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(Integer.parseInt(kg.getText().toString())>130){
+                if(!kg.getText().toString().isEmpty() && Integer.parseInt(kg.getText().toString())>130){
                     kg.setText("130");
                 }
                 isDone();
@@ -219,7 +219,10 @@ public class BMI extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(Integer.parseInt(age.getText().toString())>80){
+                if(!age.getText().toString().isEmpty() && Integer.parseInt(age.getText().toString())<5){
+                    age.setText("5");
+                }
+                if(!age.getText().toString().isEmpty() && Integer.parseInt(age.getText().toString())>80){
                     age.setText("80");
                 }
                 isDone();
